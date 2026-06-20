@@ -1,0 +1,15 @@
+# Workflow
+name: Hello
+
+#on tells when the workflow should run
+on:
+  Workflow_dispatch:
+
+#job tells workflow should do, jobs can be multiple
+#jobs is an object so need indentation
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: say hello to everyone
+        run: echo "Hello Dosto"
