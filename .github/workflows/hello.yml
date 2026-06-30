@@ -23,5 +23,5 @@ jobs:
       
       - name: Print the runner's operating system.
         run: echo "${{ runner.os }}"
-      - name: Intentionally fail the pipeline
-        run: exit 1
+      - name: just exit
+        run: exit 0
