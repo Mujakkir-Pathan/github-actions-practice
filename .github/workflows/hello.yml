@@ -1,9 +1,13 @@
+name: cid
+on:
+  push:
+    branches: [main]
 jobs:
   greet:
     runs-on: ubuntu-latest
-    steps:
+    steps: 
       - name: Check out the repository
-        run: actions/checkout
+        uses: actions/checkout@v4
       
       - name: Prints
         run: echo "Hello from GitHub Actions!"
