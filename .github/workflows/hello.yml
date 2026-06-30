@@ -15,7 +15,7 @@ jobs:
       - name: Print the current date and time
         run: echo "date=$(date)"
 
-    - name: Print the name of the branch
+      - name: Print the name of the branch
         run: echo "${{github.ref_name}}"
 
       - name: List the files in the repository.
@@ -23,3 +23,5 @@ jobs:
       
       - name: Print the runner's operating system.
         run: echo "${{ runner.os }}"
+      - name: Intentionally fail the pipeline
+        run: exit 1
