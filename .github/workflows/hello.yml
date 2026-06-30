@@ -1,15 +1,9 @@
-# Workflow
-name: Hello
-
-# on tells when the workflow should run
-on:
-  workflow_dispatch:
-
-# job tells workflow what it should do
 jobs:
-  say-hello:
+  greet:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Say hello to everyone
-        run: echo "Hello Dosto"
+      - name: Check out the repository
+        run: actions/checkout
+      
+      - name: Prints
+        run: echo "Hello from GitHub Actions!"
