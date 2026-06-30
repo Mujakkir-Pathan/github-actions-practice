@@ -11,3 +11,15 @@ jobs:
       
       - name: Prints
         run: echo "Hello from GitHub Actions!"
+      
+      - name: Print the current date and time
+        run: echo "date=$(date)"
+
+      - name: Print the name of the branch
+        run: echo "${{github.ref_name}}"
+
+      - name: List the files in the repository.
+        run: ls -la
+      
+      - name: Print the runner's operating system.
+        run: echo "${{ runner.os }}"
