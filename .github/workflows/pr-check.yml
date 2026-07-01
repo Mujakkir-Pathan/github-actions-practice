@@ -10,5 +10,3 @@ jobs:
     steps:
       - name: prints brsnch name
         run: echo "PR check running for branch: ${{ github.head_ref }}"
-        
-
