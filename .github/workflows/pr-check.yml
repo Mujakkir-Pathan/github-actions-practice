@@ -1,5 +1,4 @@
 name: advanced
-
 on:
   pull_request:
     types: [opened, synchronize]
