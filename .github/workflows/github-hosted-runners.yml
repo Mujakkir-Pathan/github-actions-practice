@@ -37,3 +37,13 @@ jobs:
 
       - name: Print Current User
         run: echo "Current User:$(id -un)"
+
+  version:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print Software Versions
+      run: |
+        echo "Docker version: $(docker --version)"
+        echo "Python version: $(python3 --version)"
+        echo "Node version: $(node --version)"
+        echo "Git version: $(git --version)"
