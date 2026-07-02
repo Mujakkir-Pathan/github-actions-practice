@@ -16,4 +16,3 @@ jobs:
     steps:
       - name: print value
         run: echo "Environment:${{ github.event.inputs.environment }}"
-
