@@ -1,27 +1,27 @@
-# name: cid
-# on:
-#   push:
-#     branches: [main]
-# jobs:
-#   greet:
-#     runs-on: ubuntu-latest
-#     steps: 
-#       - name: Check out the repository
-#         uses: actions/checkout@v4
+name: cid
+on:
+  push:
+    branches: [main]
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Check out the repository
+        uses: actions/checkout@v4
       
-#       - name: Prints
-#         run: echo "Hello from GitHub Actions!"
+      - name: Prints
+        run: echo "Hello from GitHub Actions!"
       
-#       - name: Print the current date and time
-#         run: echo "date=$(date)"
+      - name: Print the current date and time
+        run: echo "date=$(date)"
 
-#       - name: Print the name of the branch
-#         run: echo "${{github.ref_name}}"
+      - name: Print the name of the branch
+        run: echo "${{github.ref_name}}"
 
-#       - name: List the files in the repository.
-#         run: ls -la
+      - name: List the files in the repository.
+        run: ls -la
       
-#       - name: Print the runner's operating system.
-#         run: echo "${{ runner.os }}"
-#       - name: just exit
-#         run: exit 0
+      - name: Print the runner's operating system.
+        run: echo "${{ runner.os }}"
+      - name: just exit
+        run: exit 0
