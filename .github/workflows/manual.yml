@@ -2,7 +2,7 @@ name: dispatch
 on:
   workflow_dispatch:
     inputs:
-    environment:
+      environment:
         description: 'Select the target environment'
         required: true
         type: choice
@@ -10,3 +10,9 @@ on:
           - staging
           - production
         default: 'staging'
+jobs:
+  1st_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print value 
+        run: echo "Environment:${{ inputs.environment }}"
