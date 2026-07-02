@@ -11,7 +11,7 @@ on:
           - production
         default: 'staging'
 jobs:
-  1stjob:
+  firstjob:
     runs-on: ubuntu-latest
     steps:
       - name: print value 
