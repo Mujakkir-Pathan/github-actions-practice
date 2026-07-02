@@ -1,0 +1,12 @@
+name: dispatch
+on:
+  workflow_dispatch:
+    inputs:
+    environment:
+        description: 'Select the target environment'
+        required: true
+        type: choice
+        options:
+          - staging
+          - production
+        default: 'staging'
