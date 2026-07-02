@@ -1,5 +1,5 @@
 name: dispatch
-on:
+on: 
   workflow_dispatch:
     inputs:
       environment:
@@ -14,5 +14,6 @@ jobs:
   first_job:
     runs-on: ubuntu-latest
     steps:
-      - name: print value 
-        run: echo "Environment:${{ inputs.environment }}"
+      - name: print value
+        run: echo "Environment:${{ github.event.inputs.environment }}"
+
