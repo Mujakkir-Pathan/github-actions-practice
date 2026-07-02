@@ -1,4 +1,4 @@
-name: self_hosted
+name: github_hosted
 
 on: 
   workflow_dispatch:
