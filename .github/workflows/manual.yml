@@ -17,4 +17,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print value
-        run: echo "Environment:${{ inputs.environment }}"
+        run: echo "Environment: ${{ inputs.environment }}"
