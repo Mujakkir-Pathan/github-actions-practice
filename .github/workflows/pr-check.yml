@@ -1,5 +1,7 @@
 name: advanced
 on:
+  schedule:
+    - cron: '0 0 * * *'
   pull_request:
     types: [opened, synchronize]
     branches: [main]
@@ -9,5 +11,3 @@ jobs:
     steps:
       - name: prints branch name
         run: echo "PR check running for branch:${{ github.head_ref }}"
-
-
