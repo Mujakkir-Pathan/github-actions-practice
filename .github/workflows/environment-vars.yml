@@ -7,7 +7,7 @@ env:
 
 jobs:
     vars:
-        runs-on: [self-hosted, my-linux-server]
+        runs-on: [self-hosted, my-linux-runner]
 
         env:
             ENVIRONMENT: staging
