@@ -1,0 +1,24 @@
+name: multi_job
+
+on:
+  workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: [self-hosted, my-linux-runner]
+        steps: 
+            - name: build stage
+              run: echo "Building the app"
+
+    test:
+        runs-on: [self-hosted, my-linux-runner]
+        needs: build
+        steps: 
+            - name: test stage
+              run: echo "Running tests"
+    deploy:
+        runs-on: [self-hosted, my-linux-runner]
+        needs: test  
+        steps:
+            - name: deploy stage
+              run: echo "Deploying"
