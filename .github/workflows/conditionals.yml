@@ -1,7 +1,7 @@
 name: condi
 
 on:
-    workflow_dispatch:
+    push:
 
 jobs:
     build:
@@ -13,4 +13,18 @@ jobs:
             - name: Main branch step
               if: github.ref == 'refs/heads/main' 
               run: echo "This runs only on the main branch" 
-             
+            
+            - name: Intentional failure
+              continue-on-error: true
+              run: exit 1
+              
+            - name: Run only if previous step failed
+              if: ${{ failure() }}
+              run: echo "Previous step failed."
+    
+    test: 
+        if: github.event_name == 'push'
+        runs-on: ubuntu-latest
+        steps:
+            - name: checks the workflow call
+              run: echo "This job runs only on push events."
