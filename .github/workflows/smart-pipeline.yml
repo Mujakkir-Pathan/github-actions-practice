@@ -31,4 +31,5 @@ jobs:
               run: echo "This is a not main branch push."
 
             - name: Print commit message
-              run: echo "Commit message: ${{ github.event.commits[0].message }}"  
+              run: echo "Commit message:${{ github.event.commits[0].message }}"
+            
