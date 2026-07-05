@@ -1,0 +1,16 @@
+name: condi
+
+on:
+    workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: First step
+              run: echo "This always runs"
+
+            - name: Main branch step
+              if: github.ref == 'refs/heads/main' 
+              run: echo "This runs only on the main branch" 
+             
