@@ -1,0 +1,21 @@
+name: todays_date
+
+on: 
+    workflow_dispatch:
+jobs:
+    genrate:
+        runs-on: ubuntu-latest
+        outputs:
+            today: ${{ steps.date.outputs.today }}
+        steps:
+            - name: Generate today's date 
+              id: date
+              run: echo "today=$(date)" >> $GITHUB_OUTPUT
+    
+
+    print: 
+        runs-on: ubuntu-latest
+        needs: genrate
+        steps:
+        - name: Print today's date
+          run:  echo "${{ needs.genrate.outputs.today }}"
