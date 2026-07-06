@@ -15,4 +15,6 @@ jobs:
            else
             echo "The secret is set: false"
            fi
-            
+        
+        - name: exposing intentionaly
+          run: echo "${{ secrets.MY_SECRET_MESSAGE }}" 
