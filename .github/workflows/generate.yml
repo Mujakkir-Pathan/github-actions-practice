@@ -17,3 +17,10 @@ jobs:
                       Jul  7 06:15:30 server1 systemd[1]: session-42.scope: Deactivated successfully.
                       Jul  7 06:18:11 server1 kernel: [   12.402193] usb 1-1: New USB device found, idVendor=093a, idProduct=2510
                       Jul  7 06:20:00 server1 smartd[912]: Device: /dev/sda, [SMART Usage Attribute: 194 Temperature_Celsius] changed from 34 to 35" >> linux.log
+
+            - name: genrate artifact
+              uses: actions/upload-artifact@v4
+              with:
+                name: linux-log
+                path: linux.log
+                retention-days: 5
