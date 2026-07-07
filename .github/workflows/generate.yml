@@ -1,0 +1,19 @@
+name: artifact
+on: 
+    workflow_dispatch:
+
+jobs:
+    genrate:
+        runs-on: ubuntu-latest
+        steps:
+            - name: creates a file
+              run: |
+                touch linux.log
+                echo "Jul  7 06:12:01 server1 systemd[1]: Starting Periodic Command Scheduler...
+                      Jul  7 06:12:01 server1 cron[1422]: (CRON) INFO (Running @reboot jobs)
+                      Jul  7 06:12:01 server1 systemd[1]: Started Periodic Command Scheduler.
+                      Jul  7 06:14:22 server1 NetworkManager[845]: <info> [1719814462.102] dhcp4 (eth0): state changed bound to 192.168.1.50
+                      Jul  7 06:15:05 server1 sshd[2341]: Accepted password for root from 192.168.1.105 port 54322 ssh2
+                      Jul  7 06:15:30 server1 systemd[1]: session-42.scope: Deactivated successfully.
+                      Jul  7 06:18:11 server1 kernel: [   12.402193] usb 1-1: New USB device found, idVendor=093a, idProduct=2510
+                      Jul  7 06:20:00 server1 smartd[912]: Device: /dev/sda, [SMART Usage Attribute: 194 Temperature_Celsius] changed from 34 to 35" >> linux.log
