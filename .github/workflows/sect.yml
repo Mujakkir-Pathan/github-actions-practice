@@ -10,11 +10,23 @@ jobs:
           env:
             MY_SECRET: ${{ secrets.MY_SECRET_MESSAGE }}
           run: |
-           if [ -n "$MY_SECRET" ]; then
+            if [ -n "$MY_SECRET" ]; then
             echo "The secret is set: true"
-           else
+            else
             echo "The secret is set: false"
-           fi
+            fi
         
         - name: exposing intentionaly
           run: echo "${{ secrets.MY_SECRET_MESSAGE }}" 
+
+        - name: Use secret as an environment variable
+          env:
+            MY_SECRET: ${{ secrets.MY_SECRET_MESSAGE }}
+          run: |
+            echo "The application can access the secret."
+            if [ -n "$MY_SECRET" ]; then
+              echo "Using the secret without exposing it."
+            else
+              echo "Secret is missing."
+              exit 1
+            fi
