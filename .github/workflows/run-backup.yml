@@ -17,3 +17,6 @@ jobs:
       - name: Run the script
         run: ./scripts/system_info.sh
         shell: bash
+
+      - name: chache
+        uses: actions/cache@v4
