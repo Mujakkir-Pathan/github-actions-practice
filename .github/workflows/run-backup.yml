@@ -12,8 +12,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Give permission
-        run: chmod +x system_info.sh
+        run: chmod +x scripts/system_info.sh
 
       - name: Run the script
-        run: ./system_info.sh
+        run: ./scripts/system_info.sh
         shell: bash
