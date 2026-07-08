@@ -10,6 +10,10 @@ jobs:
          - name: copy the code
            uses: actions/checkout@v4
 
+         - name: give permission
+           run: chmod +x scripts/backup.sh
+
          - name: run the script
            run: ./scripts/backup.sh
            shell: bash
+       
