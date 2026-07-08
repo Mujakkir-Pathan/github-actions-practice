@@ -11,7 +11,7 @@ jobs:
            uses: actions/checkout@v4
 
          - name: give permission
-           run: chmod +x scripts/backup.sh
+           run: chmod +x backup.sh
 
          - name: run the script
            run: ./backup.sh
