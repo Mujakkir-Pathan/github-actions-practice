@@ -2,8 +2,6 @@
 
 set -euo pipefail
 
-exit 1
-
 system_info() {
 	echo "===== System Information ====="
 	hostname
