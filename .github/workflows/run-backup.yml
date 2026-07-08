@@ -10,4 +10,6 @@ jobs:
          - name: copy the code
            uses: actions/checkout@v4
 
-        
+         - name: run the script
+           run: ./scripts/backup.sh
+           shell: bash
