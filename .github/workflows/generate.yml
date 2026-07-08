@@ -1,37 +1,43 @@
-name: artifact
+name: artifact-demo
 
 on:
   workflow_dispatch:
 
 jobs:
-  generate-log:
+  create-log:
     runs-on: ubuntu-latest
-    steps:
-      - name: Create linux.log
-        run: |
-          touch linux.log
-          echo "Jul  7 06:12:01 server1 systemd[1]: Starting Periodic Command Scheduler...
-                Jul  7 06:12:01 server1 cron[1422]: (CRON) INFO (Running @reboot jobs)
-                Jul  7 06:12:01 server1 systemd[1]: Started Periodic Command Scheduler.
-                Jul  7 06:14:22 server1 NetworkManager[845]: <info> [1719814462.102] dhcp4 (eth0): state changed bound to 192.168.1.50
-                Jul  7 06:15:05 server1 sshd[2341]: Accepted password for root from 192.168.1.105 port 54322 ssh2
-                Jul  7 06:15:30 server1 systemd[1]: session-42.scope: Deactivated successfully.
-                Jul  7 06:18:11 server1 kernel: [   12.402193] usb 1-1: New USB device found, idVendor=093a, idProduct=2510
-                Jul  7 06:20:00 server1 smartd[912]: Device: /dev/sda, [SMART Usage Attribute: 194 Temperature_Celsius] changed from 34 to 35" >> linux.log
 
-      - name: Upload linux.log artifact
+    steps:
+      - name: Create system.log file
+        run: |
+          touch system.log
+          echo "Jul  7 06:12:01 server1 systemd[1]: Starting Periodic Command Scheduler...
+          Jul  7 06:12:01 server1 cron[1422]: (CRON) INFO (Running @reboot jobs)
+          Jul  7 06:12:01 server1 systemd[1]: Started Periodic Command Scheduler.
+          Jul  7 06:14:22 server1 NetworkManager[845]: <info> dhcp4 (eth0): state changed bound to 192.168.1.50
+          Jul  7 06:15:05 server1 sshd[2341]: Accepted password for root from 192.168.1.105
+          Jul  7 06:15:30 server1 systemd[1]: session-42.scope: Deactivated successfully.
+          Jul  7 06:18:11 server1 kernel: New USB device found.
+          Jul  7 06:20:00 server1 smartd[912]: Temperature changed from 34 to 35" > system.log
+
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: linux-log
-          path: linux.log
+          name: server-log-backup
+          path: system.log
           retention-days: 5
 
   download-log:
     runs-on: ubuntu-latest
-    needs: generate-log
+    needs: create-log
+
     steps:
-      - name: Download linux.log artifact
+      - name: Download artifact
         uses: actions/download-artifact@v4
         with:
-          name: linux-log
-          path: linux-log
+          name: server-log-backup
+          path: downloaded-files
+
+      - name: Display log content
+        run: |
+          cat downloaded-files/system.log
