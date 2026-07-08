@@ -14,8 +14,6 @@ jobs:
            run: chmod +x scripts/backup.sh
 
          - name: run the script
-           run: |
-            cd scripts
-            ./backup.sh
+           run: ./backup.sh
            shell: bash
        
