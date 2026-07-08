@@ -1,0 +1,13 @@
+name: run-bac
+
+on:
+    workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+         - name: copy the code
+           uses: actions/checkout@v4
+
+        
