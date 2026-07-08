@@ -1,19 +1,19 @@
 name: run-bac
 
 on:
-    workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-         - name: copy the code
-           uses: actions/checkout@v4
+  build:
+    runs-on: ubuntu-latest
 
-         - name: give permission
-           run: chmod +x scripts/backup.sh
+    steps:
+      - name: Copy the code
+        uses: actions/checkout@v4
 
-         - name: run the script
-           run: ./backup.sh
-           shell: bash
-       
+      - name: Give permission
+        run: chmod +x scripts/backup.sh
+
+      - name: Run the script
+        run: ./scripts/backup.sh
+        shell: bash
