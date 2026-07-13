@@ -5,7 +5,7 @@ on:
         branches: [main]
 
 jobs:
-    build:
+    frontend:
         runs-on: ubuntu-latest
         steps:
             - name: checkout the code
@@ -13,4 +13,4 @@ jobs:
             
             - name: Build Docker Image
               run: |
-                docker build -t my-app devboard/.
+                docker build -t frontend-devboard-actions devboard/frontend/.
