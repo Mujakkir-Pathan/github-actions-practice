@@ -1,9 +1,7 @@
 name: Docker Publish
 
-on: 
-    push:
-        branches: 
-            - "**"
+on:
+  push:
 
 jobs:
     frontend:
