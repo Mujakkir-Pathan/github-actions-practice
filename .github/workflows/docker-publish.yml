@@ -5,13 +5,18 @@ on:
         branches: [main]
 
 jobs:
-    build:
+    frontend:
         runs-on: ubuntu-latest
         steps:
             - name: checkout the code
               uses: actions/checkout@v4
             
-            - name: Build Docker Images
+            - name: Build frontend Docker Image
               run: |
                 docker build -t frontend-devboard-actions devboard/frontend/.
-                docker build -t backend-devboard-actions devboard/backend/.
+    
+    backend:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Build backend Docker Image
+              run: docker build -t backend-devboard-actions devboard/backend/.
