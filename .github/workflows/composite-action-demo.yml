@@ -16,3 +16,7 @@ jobs:
               uses: ./.github/actions/setup-and-greet
               with: 
                 name: "Mujakkir"
+
+            - name: Print greeted output
+              run: |
+                echo "greeted= ${{ steps.greet.outputs.greeted }}"
