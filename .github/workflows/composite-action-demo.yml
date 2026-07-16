@@ -10,8 +10,9 @@ jobs:
         steps:
             - name: Checkout repository
               uses: actions/checkout@v4
-              
+
             - name: Run composite action
+              id: greet
               uses: ./.github/actions/setup-and-greet
               with: 
                 name: "Mujakkir"
