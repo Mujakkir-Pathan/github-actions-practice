@@ -9,6 +9,6 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Run composite action
-              uses: ./.github/actions/setup-and-greet/action.yml
+              uses: ./.github/actions/setup-and-greet
               with: 
                 name: "Mujakkir"
