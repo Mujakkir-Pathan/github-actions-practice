@@ -1,0 +1,33 @@
+name: composite
+description: A composite action that greets a user and prints runner information
+inputs:
+  name:
+    description: Name of the person to greet
+    required: true
+  language:
+    description: Greeting language
+    default: en
+outputs:
+  greeted:
+    description: Indicates whether the greeting was completed
+    value: ${{ steps.greet.outputs.greeted }}
+runs:
+  using: composite
+  steps:
+    - name: Print greeting
+      id: greet
+      run: | 
+        if [ "${{ inputs.language }}" = "en" ]; then
+          echo "Hello, ${{ inputs.name }}"
+        else
+          echo "Namaste, ${{ inputs.name }}"
+        fi
+
+        echo "greeted=true" >> "$GITHUB_OUTPUT"
+      shell: bash
+      
+    - name: Print date and runner OS
+      run: |
+        date
+        echo "Runner OS= ${{ runner.os }}"
+      shell: bash
