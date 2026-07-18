@@ -1,0 +1,15 @@
+name: smart-triggers
+
+on:
+  push:
+    paths:
+      - 'src/**'
+      - 'app/**'
+
+jobs:
+    path-filter-check:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print Trigger Message
+              run: |
+                echo "Workflow triggered because src/ or app/ changed."
