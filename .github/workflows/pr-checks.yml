@@ -1,0 +1,66 @@
+name: pr-checks
+
+on: 
+    workflow_dispatch:
+    pull_request:
+        branches: [main]
+
+jobs: 
+
+  file-size-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      
+      - name: Get Changed Files
+        id: changed-files
+        uses: tj-actions/changed-files@v47
+        
+      - name: Validate File Sizes
+        run: |
+          FILES="${{ steps.changed-files.outputs.all_changed_files }}"
+          MAX_SIZE=1048576
+          for FILE in $FILES; do
+            SIZE=$(stat -c%s "$FILE")
+            if [ "$SIZE" -gt "$MAX_SIZE" ]; then
+              echo "::error file=$FILE::File is larger than 1 MB."
+              exit 1
+            fi
+          done
+          echo "All changed files are within the size limit."
+
+  branch-name-check:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Get Branch Name
+        run: echo "branch name=${{ github.head_ref }}"
+
+      - name: Validate Branch Name
+        run: |
+          BRANCH_NAME="${{ github.head_ref }}"
+          case "$BRANCH_NAME" in
+            feature/*|fix/*|docs/*)
+              echo "Branch name is valid."
+              ;;
+            *)
+              echo "::error::Invalid branch name. Use feature/*, fix/*, or docs/*."
+              exit 1
+              ;;
+          esac  
+
+  pr-body-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check PR Body
+        run: |
+          echo "PR BODY= ${{ github.event.pull_request.body }}"
+
+      - name: Validate PR Body
+        run: |
+          PR_BODY="${{ github.event.pull_request.body }}"
+          if [ -z "$PR_BODY" ]; then
+            echo "::warning::Pull Request description is empty."
+          else
+            echo "Pull Request description is present."
+          fi
