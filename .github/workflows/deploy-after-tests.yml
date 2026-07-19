@@ -1,0 +1,12 @@
+name: Deploy After Tests
+on:
+  workflow_run:
+    workflows: ["Run Tests"]
+    types: [completed]
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print Deployment Message
+              
