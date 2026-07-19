@@ -9,4 +9,6 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Print Deployment Message
+              run: |
+                echo "Deploy workflow triggered."
               
