@@ -12,5 +12,5 @@ jobs:
 
             - name: Run Tests
               run: |
-                echo "Running tests..."
+                weecho "Running tests..."
 
